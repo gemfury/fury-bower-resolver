@@ -1,0 +1,21 @@
+{
+  "name": "fury-bower-resolver",
+  "version": "0.3.0",
+  "main": "./lib/index.js",
+  "keywords": [
+    "bower-resolver", "bower",
+    "gemfury", "fury"
+  ],
+  "maintainers": [
+    {
+      "name": "fury",
+      "email": "support@gemfury.com"
+    }
+  ],
+  "dependencies": {
+    "bluebird": "^2.3",
+    "decompress-zip": "^0.2.0",
+    "request-promise": "^2.0.0",
+    "tmp": "^0.0.28"
+  }
+}
