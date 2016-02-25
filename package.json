@@ -1,17 +1,20 @@
 {
   "name": "fury-bower-resolver",
   "version": "0.3.0",
+  "description": "Install private Bower packages from Gemfury",
   "main": "./lib/index.js",
   "keywords": [
     "bower-resolver", "bower",
     "gemfury", "fury"
   ],
-  "maintainers": [
-    {
-      "name": "fury",
-      "email": "support@gemfury.com"
-    }
-  ],
+  "licenses": [{
+    "type": "Apache-2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0"
+  }],
+  "maintainers": [{
+    "name": "Gemfury Team",
+    "email": "team@gemfury.com"
+  }],
   "dependencies": {
     "bluebird": "^2.3",
     "decompress-zip": "^0.2.0",
