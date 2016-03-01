@@ -36,6 +36,24 @@ use this resolver. This can be done globally or per-project:
 
 **That's it!**  You can now install Bower packages from Gemfury.
 
+## Installing packages from Gemfury
+
+Once you've enabled this resolver, you can install packages individually:
+
+```bash
+bower install fury://username/pkg-name
+```
+
+Or include them as a dependency in your project's `bower.json`:
+
+```json
+{
+  "dependencies": {
+    "pkg-name": "fury://username/pkg-name#1.1.*"
+  }
+}
+```
+
 ## Authenticating to install private packages
 
 Without authentication, this resolver allow you to install public packages
@@ -47,9 +65,9 @@ and pass it to the resolver using the `FURY_TOKEN` environment variable:
 FURY_TOKEN=mY-sEcRet-token bower install
 ```
 
-If it's not possible for you to provide an environment variable to your Bower
-installation, or you would like to save your token during development, you can
-specify it via `~/.bowerrc`:
+If it's not possible for you to modify the environment of your Bower
+installation, or you would like to save your token during development, you
+can specify it via `~/.bowerrc`:
 
 ```json
 {
@@ -62,36 +80,19 @@ specify it via `~/.bowerrc`:
 **We can only recommend this method for local development. Please do not
 commit your secrets/passwords into your SCM or distributed packages.**
 
-## Gemfury packages in bower.json
+## Advanced: Enabling cascading auto-discovery
 
-This resolver has two modes of operation: implicit and explicit.  Implicit mode
-will try to install each package from your Gemfury account, falling back on the
-default public registry for packages that are not found in Gemfury.  Explicit
-method allows you to specify which packages will come from a Gemfury account.
-Explicit method can be used with or without implicit mode enabled.
-
-### Implicitly overriding packages with Gemfury
-
-Implicit mode allows you to keep your existing `bower.json`, while this
-resolver checks your Gemfury account for existence of each package by name,
-falling back on the default public registry for those not found in your
-account.
-
-Implicit mode is disabled by default.  To enable it, please specify
-which account to search via `.bowerrc`:
-
-```json
-{
-  "furyResolver": {
-    "locateInAccount": "my-gemfury-username"
-  }
-}
-```
+This resolver has two modes of operation: implicit and explicit.  As shown
+above, explicit mode allows you to choose which packages will come from a
+Gemfury account by specifying a `fury://` source.  Alternatively, implicit
+mode, when enabled, will try to install all packages from your Gemfury account,
+falling back on the default public registry for packages not found in Gemfury.
+Explicit sources can be used with or without enabling implicit mode.
 
 ### Explicitly specifying Gemfury packages
 
-Explicit mode lets you specify which packages come from your account by using
-a Gemfury-specific URL as package source.  The URL format is as follows:
+Explicit mode lets you specify which packages come from your account by using a
+Gemfury-specific URL as package source.  The URL format is as follows:
 
     fury://<account-username>/<package-name>
 
@@ -108,6 +109,23 @@ come from the public registry:
 }
 ```
 
+### Implicitly overriding packages with Gemfury
+
+Implicit mode allows you to keep your existing `bower.json`, while this
+resolver checks your Gemfury account for existence of each package by name,
+falling back on the default public registry for those not found in your
+account.
+
+Implicit mode is disabled by default.  To enable it, please specify
+which account to search in your `.bowerrc`:
+
+```json
+{
+  "furyResolver": {
+    "locateInAccount": "my-gemfury-username"
+  }
+}
+```
 
 ### Example: Putting it all together
 

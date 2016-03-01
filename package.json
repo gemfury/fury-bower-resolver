@@ -1,6 +1,6 @@
 {
   "name": "fury-bower-resolver",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Install private Bower packages from Gemfury",
   "main": "./lib/index.js",
   "keywords": [
